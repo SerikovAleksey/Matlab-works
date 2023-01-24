@@ -1,0 +1,1 @@
+https://oceancolor.gsfc.nasa.gov/cgi/browse.pl?sub=level1or2&per=DAY&day=17514&set=10&ndx=0&mon=17471&sen=am&rad=0&frc=0&n=33.3984375&w=23.5546875&file=A2017348114000.L2_LAC_SST_BRS&wid=170&hgt=254&id=1513271420.13184&cn=34.91&cs=33.09&cw=22.23&ce=23.88&dnm=D&prm=SST

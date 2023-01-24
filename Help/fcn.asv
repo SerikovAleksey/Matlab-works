@@ -1,0 +1,36 @@
+function dudt = fcn(t, u)
+
+    dudt = zeros(size(u));     
+    L = 70;
+    m = u(1);
+    y = u(3);
+    vx = u(4);
+    vy = u(5);
+    alpha = u(6);
+    w = u(7);
+    betta = cyclogramAngle(t);
+    mu = massFlow(t);
+    Iz = m * L^2 / 12;
+
+    rho = airDensity(y);
+    
+    gamma = acos((vx*sin(alpha) + vy*cos(alpha)) / sqrt(vx^2 + vy^2));
+    F_resist = resistanceForce([vx, vy], rho, gamma); 
+    
+    F_grav = gravity(m);
+    
+    F_jet = jetForce(betta, alpha, mu);
+
+    M = dissipationMomentum(w, rho, L);
+    
+    M_jet = jetMomentum(F_jet, betta, L);
+
+    dudt(1) = massFlow(t);
+    dudt(2) = vx;
+    dudt(3) = vy;
+    dudt(4) = (F_resist(1) + F_jet(1)) / m;
+    dudt(5) = -(F_resist(2) + F_grav + F_jet(2)) / m;
+    dudt(6) = w;
+    dudt(7) = (M + M_jet)/Iz;
+
+end
